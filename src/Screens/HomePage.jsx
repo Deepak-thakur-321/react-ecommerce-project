@@ -38,7 +38,7 @@ const HomePage = () => {
                   className="img-wrapper h-48 mb-4 cursor-pointer"
                 >
                   <img
-                    src={product.images}
+                    src={product.image}
                     alt={product.title}
                     className="h-full rounded-xl object-contain mx-auto"
                   />
