@@ -66,7 +66,7 @@ const MyContextProvider = ({ children }) => {
    useEffect(() => {
       const fetchProducts = async () => {
          try {
-            const response = await axios.get("https://dummyjson.com/products");
+            const response = await axios.get("https://api.escuelajs.co/api/v1/products");
             setProducts(response.data?.products || []);
          } catch (error) {
             console.error("Error fetching products:", error);
