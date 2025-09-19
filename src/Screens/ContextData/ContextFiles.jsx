@@ -69,7 +69,7 @@ const MyContextProvider = ({ children }) => {
    useEffect(() => {
       const featuredData = async () => {
          try {
-            let response = await axios.get("https://fakestoreapi.in/api/products")
+            let response = await axios.get("https://dummyjson.com/products")
             setProducts(response.data?.products || [])
          } catch (error) {
             console.log(error);

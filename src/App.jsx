@@ -5,9 +5,7 @@ import AllReactRouters from './Components/AllReactRouters';
 const App = () => {
   return (
     <div>
-
-
-      <BrowserRouter>
+      <BrowserRouter basename="/react-ecommerce-project">
         <AllReactRouters></AllReactRouters>
       </BrowserRouter>
 

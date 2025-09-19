@@ -25,7 +25,6 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md px-4 py-3 flex items-center justify-between dark:bg-gray-900">
-      {/* Logo */}
       <div
         className="text-2xl font-bold text-blue-600"
         style={{ color: "var(--heading-color)" }}
@@ -33,7 +32,6 @@ const Navbar = () => {
         ShopEase
       </div>
 
-      {/* Desktop Menu */}
       <ul className="hidden md:flex gap-6 text-gray-600 dark:text-gray-300">
         <li>
           <NavLink
