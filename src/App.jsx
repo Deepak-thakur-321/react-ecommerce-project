@@ -1,17 +1,13 @@
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom';
-import AllReactRouters from './Components/AllReactRouters';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AllReactRouters from "./Components/AllReactRouters";
 
 const App = () => {
   return (
-    <div>
-      <BrowserRouter basename="/react-ecommerce-project">
-        <AllReactRouters></AllReactRouters>
-      </BrowserRouter>
+    <BrowserRouter basename="/react-ecommerce-project">
+      <AllReactRouters />
+    </BrowserRouter>
+  );
+};
 
-
-    </div>
-  )
-}
-
-export default App
+export default App;

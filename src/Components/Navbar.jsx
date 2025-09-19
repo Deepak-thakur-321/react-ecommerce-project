@@ -4,8 +4,6 @@ import {
   FiHome,
   FiShoppingBag,
   FiGrid,
-  FiHeart,
-  FiUser,
   FiShoppingCart,
   FiSearch,
   FiMoon,
@@ -24,18 +22,16 @@ const Navbar = () => {
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <nav className="bg-white shadow-md px-4 py-3 flex items-center justify-between dark:bg-gray-900">
-      <div
-        className="text-2xl font-bold text-blue-600"
-        style={{ color: "var(--heading-color)" }}
-      >
-        ShopEase
-      </div>
+    <nav className="bg-white shadow-md px-4 py-3 flex items-center justify-between dark:bg-gray-900 relative">
+      {/* Brand */}
+      <div className="text-2xl font-bold text-blue-600">ShopEase</div>
 
+      {/* Desktop Menu */}
       <ul className="hidden md:flex gap-6 text-gray-600 dark:text-gray-300">
         <li>
           <NavLink
             to="/"
+            end
             className={({ isActive }) =>
               isActive
                 ? "text-blue-500 flex items-center gap-1"
@@ -73,7 +69,7 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* Search Bar */}
+      {/* Desktop Search */}
       <div className="hidden md:flex items-center border border-gray-300 dark:border-gray-600 rounded-full px-3 py-1">
         <input
           onChange={(e) => setSearch(e.target.value)}
@@ -85,22 +81,23 @@ const Navbar = () => {
         <FiSearch className="text-gray-500" />
       </div>
 
-      {/* Right Icons */}
+      {/* Right Section */}
       <div className="flex items-center gap-4 text-gray-900 dark:text-white text-xl">
+        {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
           aria-pressed={theme === "dark"}
-          className="p-2 rounded-full hover:opacity-90 transition"
-          title="Toggle theme"
-          style={{ background: "transparent" }}
+          aria-label="Toggle Theme"
+          className="p-2 rounded-full hover:opacity-80 transition"
         >
           {theme === "dark" ? (
-            <FiSun size={18} color="#FBBF24" />
+            <FiSun size={18} className="text-yellow-400" />
           ) : (
-            <FiMoon size={18} color="#374151" />
+            <FiMoon size={18} className="text-gray-700" />
           )}
         </button>
 
+        {/* Cart */}
         <NavLink
           to="/cartPage"
           className={({ isActive }) =>
@@ -119,6 +116,7 @@ const Navbar = () => {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden p-2"
+          aria-label="Toggle Menu"
         >
           {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
@@ -129,7 +127,7 @@ const Navbar = () => {
         <div className="absolute top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50 md:hidden">
           <ul className="flex flex-col p-4 gap-4 text-gray-700 dark:text-gray-200">
             <li>
-              <NavLink to="/" onClick={() => setMenuOpen(false)}>
+              <NavLink to="/" end onClick={() => setMenuOpen(false)}>
                 <FiHome className="inline mr-2" /> Home
               </NavLink>
             </li>
@@ -144,21 +142,23 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+              <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 w-full">
                 Special Button
               </button>
             </li>
             {/* Mobile Search */}
-            <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-full px-3 py-1">
-              <input
-                onChange={(e) => setSearch(e.target.value)}
-                type="text"
-                placeholder="Search products..."
-                className="outline-none px-2 text-black dark:text-white bg-transparent w-full"
-                value={search}
-              />
-              <FiSearch className="text-gray-500" />
-            </div>
+            <li>
+              <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-full px-3 py-1">
+                <input
+                  onChange={(e) => setSearch(e.target.value)}
+                  type="text"
+                  placeholder="Search products..."
+                  className="outline-none px-2 text-black dark:text-white bg-transparent w-full"
+                  value={search}
+                />
+                <FiSearch className="text-gray-500" />
+              </div>
+            </li>
           </ul>
         </div>
       )}
