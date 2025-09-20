@@ -40,6 +40,7 @@ const HomePage = () => {
                     alt={product.title}
                     className="h-full rounded-xl object-contain mx-auto"
                   />
+
                 </div>
 
                 <h2 className="card-title text-lg mb-2 font-semibold text-gray-900 dark:text-white">
