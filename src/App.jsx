@@ -4,7 +4,7 @@ import AllReactRouters from "./Components/AllReactRouters";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/react-ecommerce-project">
+    <BrowserRouter >
       <AllReactRouters />
     </BrowserRouter>
   );
