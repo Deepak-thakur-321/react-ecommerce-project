@@ -63,17 +63,19 @@ const MyContextProvider = ({ children }) => {
    };
 
    // Fetch products from API
+   // Fetch products from API
    useEffect(() => {
       const fetchProducts = async () => {
          try {
-            const response = await axios.get("https://api.escuelajs.co/api/v1/products");
-            setProducts(response.data?.products || []);
+            const response = await axios.get("https://fakestoreapi.com/products");
+            setProducts(response.data || []); // fix here
          } catch (error) {
             console.error("Error fetching products:", error);
          }
       };
       fetchProducts();
    }, []);
+
 
    return (
       <MyProductContext.Provider

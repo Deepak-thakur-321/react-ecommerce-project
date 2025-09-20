@@ -6,9 +6,9 @@ const HomePage = () => {
   const { cart, products, addToCart, incrementQty, decrementQty, search } = useContext(MyProductContext);
   const navigate = useNavigate();
 
-  const filteredProducts = products.filter((items) => {
-    return !search || search.trim() === "" || items.title.toLowerCase().includes(search.toLowerCase());
-  });
+  const filteredProducts = products.filter(item =>
+    !search.trim() || item.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="app min-h-screen px-4 py-10">
@@ -24,13 +24,11 @@ const HomePage = () => {
           </p>
         </div>
 
-        {filteredProducts.map((product) => {
-          const cartItem = Array.isArray(cart)
-            ? cart.find(item => item.id === product.id)
-            : null;
+        {filteredProducts.map((product, index) => {
+          const cartItem = cart.find(item => item.id === product.id);
 
           return (
-            <div key={product.id} className="col-span-12 sm:col-span-6 lg:col-span-3">
+            <div key={product.id || index} className="col-span-12 sm:col-span-6 lg:col-span-3">
               <div className="card p-6 h-full flex flex-col justify-between bg-white dark:bg-gray-800 rounded-xl shadow-md">
 
                 <div
@@ -45,11 +43,11 @@ const HomePage = () => {
                 </div>
 
                 <h2 className="card-title text-lg mb-2 font-semibold text-gray-900 dark:text-white">
-                  {product.title.slice(0, 36)}
+                  {product?.title?.slice(0, 36)}
                 </h2>
 
                 <p className="card-muted text-sm mb-4 line-clamp-3 text-gray-600 dark:text-gray-300">
-                  {product.description.slice(0, 90)}
+                  {product.description?.slice(0, 90)}
                 </p>
 
                 <div className="flex items-center justify-between mt-auto">
@@ -70,7 +68,7 @@ const HomePage = () => {
                       >
                         -
                       </button>
-                      <span className="text-gray-500 dark:text-gray-800">{cartItem.quantity}</span>
+                      <span className="text-gray-500 dark:text-gray-200">{cartItem.quantity}</span>
                       <button
                         onClick={() => incrementQty(product.id)}
                         className="qty-btn bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded"
