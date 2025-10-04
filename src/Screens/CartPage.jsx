@@ -7,6 +7,12 @@ const CartPage = () => {
 
    const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0)
 
+   const handleCheckout = () => {
+      alert("Proceed to checkout");
+      clearCart();       // clear the cart
+      navigate("/");     // redirect to home page
+   };
+
    if (cart.length === 0) {
       <div className="p-6 text-center text-gray-100 text-lg">
          Your cart is empty 🛒
@@ -87,11 +93,11 @@ const CartPage = () => {
                         Total: ₹{totalPrice.toFixed(2)}
                      </p>
                      <button
-                        className="mt-4 w-full bg-blue-600 hover:bg-blue-700 transition rounded-md py-3 text-white font-semibold"
-                        onClick={() => alert("Proceed to checkout")}
-                     >
-                        Proceed to Checkout
-                     </button>
+            className="mt-4 w-full bg-blue-600 hover:bg-blue-700 transition rounded-md py-3 text-white font-semibold"
+            onClick={handleCheckout}
+         >
+            Proceed to Checkout
+         </button>
                   </div>
                </div>
             </>
