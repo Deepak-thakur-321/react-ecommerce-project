@@ -95,6 +95,7 @@ const MyContextProvider = ({ children }) => {
             incrementQty,
             decrementQty,
             removeItem,
+            clearCart
          }}
       >
          {children}
