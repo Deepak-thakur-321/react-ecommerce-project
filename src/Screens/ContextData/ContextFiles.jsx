@@ -62,6 +62,10 @@ const MyContextProvider = ({ children }) => {
       setCart((prev) => prev.filter((item) => item.id !== id));
    };
 
+  const clearCart = () => {
+    setCart([]); // empty the cart completely
+};
+
    // Fetch products from API
    // Fetch products from API
    useEffect(() => {
